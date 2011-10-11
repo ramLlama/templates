@@ -1,0 +1,61 @@
+\documentclass[10pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%
+%% Document Setup %%
+%%%%%%%%%%%%%%%%%%%%
+\usepackage[paper=letterpaper,margin=0.75in]{geometry}
+\setlength{\parindent}{0mm}
+\usepackage{fix-cm}
+
+%%%%%%%%%%%%
+%% Tables %%
+%%%%%%%%%%%%
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Template Commands %%
+%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bigname}[3]{{\fontsize{#2}{#3}\selectfont \textit{#1}}}
+\newcommand{\phyaddress}[3]{{\fontsize{#2}{#3}\selectfont \textit{#1}}}
+\newcommand{\ncheader}[9]{
+  \newlength{\oldtabcolsep}
+  \setlength{\oldtabcolsep}{\tabcolsep}
+  \setlength{\tabcolsep}{2.0em}
+  \begin{tabularx}{\textwidth}{@{}X p{#3}@{}}
+    \makebox[\linewidth][s]{#1} & \multirow{2}{#3}[#4]{\centering #2} \\
+    \makebox[\linewidth][s]{%
+      \fontsize{#8}{#9}\selectfont \textit{\mbox{#5} \mbox{#6} \mbox{#7}}%
+    } &
+  \end{tabularx}
+  \setlength{\tabcolsep}{\oldtabcolsep}
+  \let\oldtabcolsep\undefined
+}
+
+\newcommand{\secheader}[1]{
+  \begin{tabularx}{\textwidth}{@{}X}
+    \midrule[0.095em] \\ \addlinespace[-1.2em]
+    #1 \\
+    \bottomrule[0.02em]
+  \end{tabularx}
+}
+
+\usepackage{lipsum}
+
+\begin{document}
+\ncheader{\bigname{Ram Raghunathan}{36}{43}}
+         {\phyaddress{123 Main Street, Apt 1A Somecity, SS 01234}
+           {12}{13}}
+         {6cm}
+         {2mm}
+         {username@domain}
+         {(555)123-4567}
+         {U.S.A. Citizen}
+         {11}
+         {13}
+
+\secheader{Work Experience}
+
+\end{document}
