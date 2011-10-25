@@ -6,6 +6,7 @@
 \usepackage[paper=letterpaper,margin=0.75in]{geometry}
 \setlength{\parindent}{0mm}
 \usepackage{fix-cm}
+\thispagestyle{empty}
 
 %%%%%%%%%%%%
 %% Tables %%
@@ -14,6 +15,11 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{tabularx}
+
+%%%%%%%%%%%%%
+%% Columns %%
+%%%%%%%%%%%%%
+\usepackage{multicol}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %% Template Commands %%
@@ -35,27 +41,84 @@
 }
 
 \newcommand{\secheader}[1]{
-  \begin{tabularx}{\textwidth}{@{}X}
+  {\begin{tabularx}{\textwidth}{@{}X}
     \midrule[0.095em] \\ \addlinespace[-1.2em]
     #1 \\
     \bottomrule[0.02em]
-  \end{tabularx}
+  \end{tabularx}\hfill\\\\}
+}
+
+\newcommand{\itemplaceheader}[2]{
+  {\begin{tabularx}{\textwidth}{%
+        @{}>{\raggedright\arraybackslash}X%
+        >{\raggedleft\arraybackslash}X@{}}
+    \textbf{#1} & {#2}
+  \end{tabularx}}
+}
+
+\newcommand{\itempositionheader}[2]{
+  {\begin{tabularx}{\textwidth}{%
+        @{}>{\raggedright\arraybackslash}X%
+        >{\raggedleft\arraybackslash}X@{}}
+      \textit{#1} & \textit{#2}
+  \end{tabularx}}
 }
 
 \usepackage{lipsum}
 
 \begin{document}
 \ncheader{\bigname{Ram Raghunathan}{36}{43}}
-         {\phyaddress{123 Main Street, Apt 1A Somecity, SS 01234}
+         {\phyaddress{123 Main St, Somecity, SS 12345}
            {12}{13}}
          {6cm}
          {2mm}
-         {username@domain}
+         {id@domain}
          {(555)123-4567}
          {U.S.A. Citizen}
          {11}
          {13}
 
-\secheader{Work Experience}
+\begin{tabularx}{\textwidth}{@{}X p{6cm}@{}}
+  \begin{minipage}[t]{\linewidth}
+    \secheader{Work Experience}
+    \itemplaceheader{Initech}{Austin, TX}
+    \itempositionheader{Software Developer}{January -- December 2011}
+    \begin{list}{$\bullet$}{\leftmargin=1em \itemindent=0em
+        \itemsep=0em \topsep=0em}
+    \item Collaborated with Systems group to create a TPS report generator
+    \item Designed, implemented, and tested a copy machine destroyer
+    \end{list}
+
+  \end{minipage} &
+  \begin{minipage}[t]{6cm}
+    \secheader{Skills}
+    {\begin{tabularx}{\textwidth}{@{}X}
+      \textbf{Technical:}
+    \end{tabularx}}
+    \begin{list}{$\bullet$}{\leftmargin=1em \itemindent=0em
+        \itemsep=0em \topsep=0em}
+      \item B, C, ANSI C, C++11
+      \item Unix Programming
+    \end{list}
+
+    \hfill \\
+    \textbf{Significant Course Work}
+    \begin{list}{$\bullet$}{\leftmargin=1em \itemindent=0em
+        \itemsep=0em \topsep=0em}
+    \item Operating Systems
+    \end{list}
+
+    \hfill \\
+    \textbf{Personal:}\\
+    Team player, Articulate, Adaptable, Analytical, Quantitative
+  \end{minipage}
+\end{tabularx}\hfill\\\\
+
+\secheader{Education}
+\itemplaceheader{Learn Yourself University}{Acadmitown, SS}
+\itempositionheader{B.S. in Computer Science}{Graduated March 1980}
+Thesis Title: The Effect of Probabilistic Algorithms on Programming Languages
+
+\itemplaceheader{Dean's List}{Spring, Fall 2009}
 
 \end{document}
