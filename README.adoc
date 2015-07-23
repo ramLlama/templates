@@ -1,0 +1,7 @@
+= README
+Ram Raghunathan <ram@llama.is>
+
+== Templates
+This repository contains all of my templates for various things I do.
+
+*  https://github.com/ramLlama/templates/blob/master/resume_template.tex[resume_template.tex]: This is a template that I once used for my resume. I will update it when I next update my resume.
