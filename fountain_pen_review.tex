@@ -1,0 +1,130 @@
+%%%%%%%%%%%%%%
+% Page Setup %
+%%%%%%%%%%%%%%
+\documentclass[letterpaper,12pt]{memoir}
+\usepackage[margin=0.75in]{geometry}
+% Disable Page Numbers
+\pagenumbering{gobble}
+% Disable paragraph indentation
+\setlength{\parindent}{0pt}
+% No margin for fbox
+\setlength{\fboxsep}{0pt}
+
+%%%%%%%%%%%%
+% Packages %
+%%%%%%%%%%%%
+% Early packages
+\usepackage{xcolor}
+
+% Packages
+\usepackage{expl3}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{tabularx}
+
+%%%%%%%%%%%%
+% Commands %
+%%%%%%%%%%%%
+% Repeat command
+\ExplSyntaxOn
+\cs_new_eq:NN \Repeat \prg_replicate:nn
+\ExplSyntaxOff
+
+% Centimeter Ruler
+\makeatletter
+\newcommand{\r@p}[1]{\hbox to 1mm{\hfil#1}}
+\newcommand{\r@startT}{\vrule height 1pt depth 8pt}
+\newcommand{\r@t}{\r@p{\vrule height 0pt depth 4pt}}
+\newcommand{\r@T}{\r@p{\r@startT}}
+\newcommand{\r@cm}{\r@t\r@t\r@t\r@t\r@t\r@t\r@t\r@t\r@t\r@T}
+\newcommand{\r@r}[1]{$\vcenter{\hrule\hbox{\r@startT#1}}$}
+\newcommand{\cmruler}[1]{\r@r{\Repeat{#1}{\r@cm}}}
+\makeatother
+
+% Pretty framed
+\tikzset{
+  titlebox/.style ={
+    draw=gray,
+    thick,
+    fill=white,
+    text=black,
+    rectangle,
+    rounded corners,
+    right,
+    minimum height=.7cm
+  }
+}
+\mdfdefinestyle{prettystyle}{
+outerlinewidth=1em,
+outerlinecolor=white,
+leftmargin=-1em,
+rightmargin=-1em,
+middlelinewidth=1.2pt,
+roundcorner=5pt,
+linecolor=gray,
+innertopmargin=1.2\baselineskip,
+skipabove={\dimexpr0.5\baselineskip+\topskip\relax},
+skipbelow={-1em},
+needspace=3\baselineskip,
+frametitlefont=\sffamily\bfseries,
+singleextra={\node[titlebox,xshift=2mm] at  (P-|O){~\prettytitle\hbox{~}};{}}
+}
+\newcommand{\prettytitle}{TEST TITLE}
+\newenvironment{prettyframed}[1]
+{
+\renewcommand{\prettytitle}{#1}
+\begin{mdframed}[style=prettystyle]
+}
+{
+\end{mdframed}
+}
+
+%%%%%%%%%%%%
+% Document %
+%%%%%%%%%%%%
+\begin{document}
+\begin{tabularx}{\textwidth}{@{}XXX@{}}
+Make: \textcolor{lightgray}{\hrulefill} & Model: \textcolor{lightgray}{\hrulefill} & Nib: \textcolor{lightgray}{\hrulefill}
+\end{tabularx}
+
+\begin{prettyframed}{Normal Writing}
+  \vspace{0.75in}
+\end{prettyframed}
+
+\begin{prettyframed}{Fast Writing}
+  \vspace{0.75in}
+\end{prettyframed}
+
+\begin{tabularx}{\textwidth}{@{}XXX@{}}
+  \begin{prettyframed}{Line Variation}
+    \begin{minipage}[t][1.5in][t]{\textwidth}
+      \begin{vplace}[0.2]
+        \cmruler{4}
+      \end{vplace}
+    \end{minipage}
+  \end{prettyframed} &
+                       \begin{prettyframed}{Wetness}
+                         \begin{minipage}[t][1.5in][t]{\textwidth}
+
+                         \end{minipage}
+                       \end{prettyframed} &
+                                            \begin{prettyframed}{Dry Time}
+                                              \begin{minipage}[t][1.5in][t]{\textwidth}
+                                                {\begin{tabularx}{\textwidth}{cXXX}
+                                                   5s & 10s & 20s & 30s
+                                                 \end{tabularx}}
+                                              \end{minipage}
+                                            \end{prettyframed} \\
+\end{tabularx}
+
+\vspace{\fill}
+
+\begin{tabularx}{\textwidth}{@{}X r@{}}
+Ink: \hrulefill & Date: \underline{\hspace{5cm}}
+\end{tabularx}
+\end{document}
+
+%%% Local Variables:
+%%% TeX-command-default: "LatexMk"
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
