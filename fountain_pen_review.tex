@@ -2,7 +2,7 @@
 % Page Setup %
 %%%%%%%%%%%%%%
 \documentclass[letterpaper,12pt]{memoir}
-\usepackage[margin=0.75in]{geometry}
+\usepackage[margin=0.5in]{geometry}
 % Disable Page Numbers
 \pagenumbering{gobble}
 % Disable paragraph indentation
@@ -32,11 +32,13 @@ Make: \textcolor{lightgray}{\hrulefill} & Model: \textcolor{lightgray}{\hrulefil
   \vspace{0.75in}
 \end{prettyframed}
 
+% vspace before and after to compensate for tabularx spacing
+\vspace{-1em}
 \begin{tabularx}{\textwidth}{@{}XXX@{}}
   \begin{prettyframed}{Line Variation}
     \begin{minipage}[t][1.5in][t]{\textwidth}
       \begin{vplace}[0.2]
-        \cmruler{4}
+        \hspace*{\fill}\cmruler{4}\hspace*{\fill}
       \end{vplace}
     \end{minipage}
   \end{prettyframed} &
@@ -53,8 +55,13 @@ Make: \textcolor{lightgray}{\hrulefill} & Model: \textcolor{lightgray}{\hrulefil
                                               \end{minipage}
                                             \end{prettyframed} \\
 \end{tabularx}
+\vspace{-3em}
 
-\vspace{\fill}
+\begin{prettyframed}{Doodles!}
+  \vspace{2in}
+\end{prettyframed}
+
+\vfill
 
 \begin{tabularx}{\textwidth}{@{}X r@{}}
 Ink: \textcolor{lightgray}{\hrulefill} & Date: \textcolor{lightgray}{\rule{5cm}{0.4pt}}

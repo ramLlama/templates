@@ -57,17 +57,19 @@
 \mdfdefinestyle{prettystyle}{
 outerlinewidth=1em,
 outerlinecolor=white,
-leftmargin=-1em,
-rightmargin=-1em,
+leftmargin=0em,
+rightmargin=0em,
 middlelinewidth=1.2pt,
 roundcorner=5pt,
 linecolor=lightgray,
 innertopmargin=1.2\baselineskip,
-skipabove={\dimexpr0.5\baselineskip+\topskip\relax},
-skipbelow={-1em},
+skipabove={1em},
+skipbelow={0em},
+%skipabove={\dimexpr0.5\baselineskip+\topskip\relax},
+%skipbelow={-1em},
 needspace=3\baselineskip,
 frametitlefont=\sffamily\bfseries,
-singleextra={\node[titlebox,xshift=2mm] at  (P-|O){~\prettytitle\hbox{~}};{}}
+singleextra={\node[titlebox,xshift=2mm] at  (P-|O){~\prettytitle\hbox{~}};{}},
 }
 \newcommand{\prettytitle}{TEST TITLE}
 \newenvironment{prettyframed}[1]
@@ -77,6 +79,8 @@ singleextra={\node[titlebox,xshift=2mm] at  (P-|O){~\prettytitle\hbox{~}};{}}
 }
 {
 \end{mdframed}
+% skipbelow doesn't work for some reason, so use vspace
+\vspace{-1em}
 }
 
 %%%%%%%%%%%%%%%%%%
