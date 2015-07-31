@@ -13,70 +13,8 @@
 %%%%%%%%%%%%
 % Packages %
 %%%%%%%%%%%%
-% Early packages
-\usepackage{xcolor}
-
-% Packages
-\usepackage{expl3}
-\usepackage[framemethod=tikz]{mdframed}
+\usepackage{fpreviewtools}
 \usepackage{tabularx}
-
-%%%%%%%%%%%%
-% Commands %
-%%%%%%%%%%%%
-% Repeat command
-\ExplSyntaxOn
-\cs_new_eq:NN \Repeat \prg_replicate:nn
-\ExplSyntaxOff
-
-% Centimeter Ruler
-\makeatletter
-\newcommand{\r@p}[1]{\hbox to 1mm{\hfil#1}}
-\newcommand{\r@startT}{\vrule height 1pt depth 8pt}
-\newcommand{\r@t}{\r@p{\vrule height 0pt depth 4pt}}
-\newcommand{\r@T}{\r@p{\r@startT}}
-\newcommand{\r@cm}{\r@t\r@t\r@t\r@t\r@t\r@t\r@t\r@t\r@t\r@T}
-\newcommand{\r@r}[1]{$\vcenter{\hrule\hbox{\r@startT#1}}$}
-\newcommand{\cmruler}[1]{\r@r{\Repeat{#1}{\r@cm}}}
-\makeatother
-
-% Pretty framed
-\tikzset{
-  titlebox/.style ={
-    draw=lightgray,
-    thick,
-    fill=white,
-    text=black,
-    rectangle,
-    rounded corners,
-    right,
-    minimum height=.7cm
-  }
-}
-\mdfdefinestyle{prettystyle}{
-outerlinewidth=1em,
-outerlinecolor=white,
-leftmargin=-1em,
-rightmargin=-1em,
-middlelinewidth=1.2pt,
-roundcorner=5pt,
-linecolor=lightgray,
-innertopmargin=1.2\baselineskip,
-skipabove={\dimexpr0.5\baselineskip+\topskip\relax},
-skipbelow={-1em},
-needspace=3\baselineskip,
-frametitlefont=\sffamily\bfseries,
-singleextra={\node[titlebox,xshift=2mm] at  (P-|O){~\prettytitle\hbox{~}};{}}
-}
-\newcommand{\prettytitle}{TEST TITLE}
-\newenvironment{prettyframed}[1]
-{
-\renewcommand{\prettytitle}{#1}
-\begin{mdframed}[style=prettystyle]
-}
-{
-\end{mdframed}
-}
 
 %%%%%%%%%%%%
 % Document %
