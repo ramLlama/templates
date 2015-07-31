@@ -1,0 +1,70 @@
+%%%%%%%%%%%%%%
+% Page Setup %
+%%%%%%%%%%%%%%
+\documentclass[letterpaper,12pt]{memoir}
+\usepackage[margin=0.5in]{geometry}
+% Disable Page Numbers
+\pagenumbering{gobble}
+% Disable paragraph indentation
+\setlength{\parindent}{0pt}
+% No margin for fbox
+\setlength{\fboxsep}{0pt}
+
+%%%%%%%%%%%%
+% Packages %
+%%%%%%%%%%%%
+\usepackage{colortbl}
+\usepackage{fpreviewtools}
+\usepackage{tabularx}
+
+%%%%%%%%%%%%
+% Document %
+%%%%%%%%%%%%
+\begin{document}
+\begin{tabularx}{\textwidth}{@{}XX@{}}
+Make: \textcolor{lightgray}{\hrulefill} & Ink Name: \textcolor{lightgray}{\hrulefill}
+\end{tabularx}
+
+\begin{prettyframed}{Swab}
+  \begin{tabularx}{\textwidth}{@{}XXX@{}}
+    1x & 2x & 3x
+  \end{tabularx}
+  \vspace{8mm}
+\end{prettyframed}
+
+\begin{prettyframed}{Writing Test and Drying Times}
+  \begin{tabularx}{\textwidth}{@{}X!{\textcolor{lightgray}{\vrule}}p{1.5cm}@{}p{1.5cm}@{}p{1.5cm}@{}p{1.5cm}@{}}
+    Pen and Nib & 5s & 10s & 20s & 30s \\[8mm]
+    \textcolor{lightgray}{\hrulefill} & & & & \\[8mm]
+    \textcolor{lightgray}{\hrulefill} & & & & \\[8mm]
+    \textcolor{lightgray}{\hrulefill} & & & &
+  \end{tabularx}
+\end{prettyframed}
+
+\vspace{-1em}
+\begin{tabularx}{\textwidth}{@{}XX@{}}
+  \begin{prettyframed}{Water Resistance (Smear)}
+    \begin{minipage}[t][1.5in][t]{\textwidth}
+    \end{minipage}
+  \end{prettyframed} &
+                       \begin{prettyframed}{Water Resistance (Drops)}
+                         \begin{minipage}[t][1.5in][t]{\textwidth}
+                         \end{minipage}
+                       \end{prettyframed}
+\end{tabularx}
+\vspace{-3em}
+
+\begin{prettyframed}{Doodles!}
+  \vspace{2in}
+\end{prettyframed}
+
+\vfill
+
+\hfill Date: \textcolor{lightgray}{\rule{5cm}{0.4pt}}
+\end{document}
+
+%%% Local Variables:
+%%% TeX-command-default: "LatexMk"
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
